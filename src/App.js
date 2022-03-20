@@ -1,4 +1,5 @@
 import './App.css';
+import 'antd/dist/antd.css';
 import {useRoutes} from "react-router-dom";
 import {IndexRouter} from "./routes/IndexRouter";
 

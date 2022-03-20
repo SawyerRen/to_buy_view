@@ -7,15 +7,15 @@ import nav3 from "../../../assets/img/nav3.jpg"
 function Comment(props) {
     return (
         <div>
-            <div className={`${s.address} ${s.mt}`}>
-                <div className={`${s.wrapper} ${s.clearfix}`}>
-                    <Link to={"/home"} className={s.fl}>Home page</Link>
-                    <span>/</span>
-                    <Link to={"/user/index"}>User Center</Link>
-                    <span>/</span>
-                    <Link to={"/user/comment"} className={s.on}>My comment</Link>
-                </div>
-            </div>
+            {/*<div className={`${s.address} ${s.mt}`}>*/}
+            {/*    <div className={`${s.wrapper} ${s.clearfix}`}>*/}
+            {/*        <Link to={"/home"} className={s.fl}>Home page</Link>*/}
+            {/*        <span>/</span>*/}
+            {/*        <Link to={"/user/index"}>User Center</Link>*/}
+            {/*        <span>/</span>*/}
+            {/*        <Link to={"/user/comment"} className={s.on}>My comment</Link>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <div className={s.Bott}>
                 <div className={`${s.wrapper} ${s.clearfix}`}>

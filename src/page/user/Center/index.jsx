@@ -11,13 +11,13 @@ import logo4 from "../../../assets/img/new/gxin4.jpg"
 function UserCenter(props) {
     return (
         <div>
-            <div className={`${s.address} ${s.mt}`}>
-                <div className={`${s.wrapper} ${s.clearfix}`}>
-                    <Link to={"/home"} className={s.fl}>Home page</Link>
-                    <span>/</span>
-                    <Link to={"/user/index"} className={s.on}>User Center</Link>
-                </div>
-            </div>
+            {/*<div className={`${s.address} ${s.mt}`}>*/}
+            {/*    <div className={`${s.wrapper} ${s.clearfix}`}>*/}
+            {/*        <Link to={"/home"} className={s.fl}>Home page</Link>*/}
+            {/*        <span>/</span>*/}
+            {/*        <Link to={"/user/index"} className={s.on}>User Center</Link>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <div className={s.Bott}>
                 <div className={`${s.wrapper} ${s.clearfix}`}>

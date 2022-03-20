@@ -6,13 +6,13 @@ import code from "../../../assets/img/new/code.jpg"
 function ChangePwd(props) {
     return (
         <div>
-            <div className={`${s.address} ${s.mt}`}>
-                <div className={`${s.wrapper} ${s.clearfix}`}>
-                    <Link to={"/home"} className={s.fl}>Home page</Link>
-                    <span>/</span>
-                    <Link to={"/user/info"} className={s.on}>User information</Link>
-                </div>
-            </div>
+            {/*<div className={`${s.address} ${s.mt}`}>*/}
+            {/*    <div className={`${s.wrapper} ${s.clearfix}`}>*/}
+            {/*        <Link to={"/home"} className={s.fl}>Home page</Link>*/}
+            {/*        <span>/</span>*/}
+            {/*        <Link to={"/user/info"} className={s.on}>User information</Link>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <div className={s.Bott}>
                 <div className={`${s.wrapper} ${s.clearfix}`}>

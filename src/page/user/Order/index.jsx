@@ -6,19 +6,22 @@ import zuo from "../../../assets/img/zuo.jpg"
 import you from "../../../assets/img/you.jpg"
 import LeftMenu from "../../../common/user/LeftMenu";
 import {Link} from "react-router-dom";
+import {Pagination} from 'antd';
+import {Input} from 'antd';
 
+const {Search} = Input;
 function Order(props) {
     return (
         <div>
-            <div className={`${s.address} ${s.mt}`}>
-                <div className={`${s.wrapper} ${s.clearfix}`}>
-                    <Link to={"/home"} className={s.fl}>Home page</Link>
-                    <span>/</span>
-                    <Link to={"/user/index"}>User Center</Link>
-                    <span>/</span>
-                    <Link to={"/user/order"} className={s.on}>My order</Link>
-                </div>
-            </div>
+            {/*<div className={`${s.address} ${s.mt}`}>*/}
+            {/*    <div className={`${s.wrapper} ${s.clearfix}`}>*/}
+            {/*        <Link to={"/home"} className={s.fl}>Home page</Link>*/}
+            {/*        <span>/</span>*/}
+            {/*        <Link to={"/user/index"}>User Center</Link>*/}
+            {/*        <span>/</span>*/}
+            {/*        <Link to={"/user/order"} className={s.on}>My order</Link>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
             <div className={s.Bott}>
                 <div className={`${s.wrapper} ${s.clearfix}`}>
                     <LeftMenu/>
@@ -33,10 +36,9 @@ function Order(props) {
                                 <li><Link to={"#2"}>Pending receipt</Link></li>
                                 <li><Link to={"#2"}>Closed</Link></li>
                             </ul>
-                            <form action="#" method="get" className={`${s.fl} ${s.clearfix}`}>
-                                <input type="text" name="" id="" placeholder="Please enter product name or order number"/>
-                                <input type="button" name="" id=""/>
-                            </form>
+                            {/*<form action="#" method="get" className={`${s.fl} ${s.clearfix}`}>*/}
+                                <Search placeholder="input search text" allowClear style={{width: 200}}/>
+                            {/*</form>*/}
                         </div>
                         <div className={s.dkuang}>
                             <p className={s.one}>Received</p>
@@ -120,10 +122,14 @@ function Order(props) {
                                 </p>
                             </div>
                         </div>
-                        <div className={`${s.fenye} ${s.clearfix}`}>
-                            <Link to="#"><img src={zuo}/></Link>
-                            <Link to="#">1</Link>
-                            <Link to="#"><img src={you}/></Link>
+                        {/*<div className={`${s.fenye} ${s.clearfix}`}>*/}
+
+                        {/*    /!*<Link to="#"><img src={zuo}/></Link>*!/*/}
+                        {/*    /!*<Link to="#">1</Link>*!/*/}
+                        {/*    /!*<Link to="#"><img src={you}/></Link>*!/*/}
+                        {/*</div>*/}
+                        <div style={{textAlign:"center"}}>
+                            <Pagination defaultCurrent={1} total={50} />
                         </div>
                     </div>
                 </div>

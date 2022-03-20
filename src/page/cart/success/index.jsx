@@ -7,11 +7,11 @@ function CartSuccess(props) {
     return (
         <div>
             <div className={`${s.order} ${s.mt} ${s.cart}`}>
-                <div className={s.site}>
-                    <p className={`${s.wrapper} ${s.clearfix}`}>
-                        <span className={s.fl}>Payment Success</span>
-                    </p>
-                </div>
+                {/*<div className={s.site}>*/}
+                {/*    <p className={`${s.wrapper} ${s.clearfix}`}>*/}
+                {/*        <span className={s.fl}>Payment Success</span>*/}
+                {/*    </p>*/}
+                {/*</div>*/}
                 <p className={s.ok}>Payment Success！<Link to={"/user/order"}>返回订单页</Link></p>
             </div>
             <div className={s.like}>

@@ -626,8 +626,8 @@ body {
     height:268px;
 }
 .proList > li dl dd{
-    height: 30px;
-    line-height: 30px;
+    height: 45px;
+    line-height: 20px;
 }
 .proList > li dl dd:last-child,
 .paintList a dl dd:last-child{

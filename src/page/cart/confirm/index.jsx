@@ -7,11 +7,11 @@ import {Link} from "react-router-dom";
 function CartConfirm(props) {
     return (
         <div className={`${s.order} ${s.cart} ${s.mt}`}>
-            <div className={s.site}>
-                <p className={`${s.wrapper} ${s.clearfix}`}>
-                    <span className={s.fl}>Order confirmation</span>
-                </p>
-            </div>
+            {/*<div className={s.site}>*/}
+            {/*    <p className={`${s.wrapper} ${s.clearfix}`}>*/}
+            {/*        <span className={s.fl}>Order confirmation</span>*/}
+            {/*    </p>*/}
+            {/*</div>*/}
             <div className={`${s.orderCon} ${s.wrapper} ${s.clearfix}`}>
                 <div className={`${s.orderL} ${s.fl}`}>
                     <h3>Receiver information<a href="#" className={s.fr}>Add address</a></h3>
