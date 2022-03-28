@@ -17,44 +17,78 @@ import Index from "../page/home";
 import Category from "../page/home/Category";
 import GoodsDetail from "../page/home/GoodsDetail";
 import Search from "../page/search";
-import {Navigate} from "react-router-dom";
 import Entrance from "../page/entrance";
+import {Routes, Route, Navigate} from "react-router-dom"
 
-export const IndexRouter = [
-    {path: "/login", element: <Login/>},
-    {path: "/register", element: <Register/>},
-    {
-        path: "/user",
-        element: <User/>,
-        children: [
-            {path: "order", element: <Order/>},
-            {path: "comment", element: <Comment/>},
-            {path: "index", element: <UserCenter/>},
-            {path: "address", element: <UserAddress/>},
-            {path: "info", element: <UserInfo/>},
-            {path: "change_password", element: <ChangePwd/>},
-            {path: "order_detail", element: <OrderDetail/>},
-        ]
-    },
-    {
-        path: "/cart",
-        element: <Cart/>,
-        children: [
-            {path: "list", element: <CartList/>},
-            {path: "confirm", element: <CartConfirm/>},
-            {path: "success", element: <CartSuccess/>}
-        ]
-    },
-    {path: "/", element: <Entrance/>},
-    {
-        path: "/",
-        element: <Index/>,
-        children: [
-            {path:"home", element:<Home/>},
-            {path:"goods", element:<Category/>},
-            {path: "goods_detail", element: <GoodsDetail/>}
-        ]
-    },
-    {path: "/search", element: <Search/>},
-    {path: '*', element: <Navigate to={"/home"}/>}
-]
+
+export default function IndexRouter() {
+    return (
+        <Routes>
+            <Route path={"/login"} element={<Login/>}/>
+            <Route path={"/register"} element={<Register/>}/>
+            <Route path={"/"} element={<Entrance/>}/>
+
+            <Route path={"/user"} element={localStorage.getItem("user_id") ? <User/> : <Navigate to={"/login"} replace={false}/>}>
+                <Route path={"order"} element={<Order/>}/>
+                <Route path={"comment"} element={<Comment/>}/>
+                <Route path={"index"} element={<UserCenter/>}/>
+                <Route path={"address"} element={<UserAddress/>}/>
+                <Route path={"info"} element={<UserInfo/>}/>
+                <Route path={"change_password"} element={<ChangePwd/>}/>
+                <Route path={"order_detail"} element={<OrderDetail/>}/>
+            </Route>
+
+            <Route path={"/cart"} element={localStorage.getItem("user_id") ? <Cart/> : <Navigate to={"/login"} replace={false}/>}>
+                <Route path={"list"} element={<CartList/>}/>
+                <Route path={"confirm"} element={<CartConfirm/>}/>
+                <Route path={"success"} element={<CartSuccess/>}/>
+            </Route>
+            <Route path={"/"} element={<Index/>}>
+                <Route path={"home"} element={<Home/>}/>
+                <Route path={"goods"} element={<Category/>}/>
+                <Route path={"goods_detail"} element={<GoodsDetail/>}/>
+            </Route>
+            <Route path={"/search"} element={<Search/>}/>
+            <Route path={"*"} element={<Home/>}/>
+        </Routes>
+    );
+}
+
+// export const IndexRouter = [
+//     {path: "/login", element: <Login/>},
+//     {path: "/register", element: <Register/>},
+//     {
+//         path: "/user",
+//         element: <User/>,
+//         children: [
+//             {path: "order", element: <Order/>},
+//             {path: "comment", element: <Comment/>},
+//             {path: "index", element: <UserCenter/>},
+//             {path: "address", element: <UserAddress/>},
+//             {path: "info", element: <UserInfo/>},
+//             {path: "change_password", element: <ChangePwd/>},
+//             {path: "order_detail", element: <OrderDetail/>},
+//         ]
+//     },
+//     {
+//         path: "/cart",
+//         element: <Cart/>,
+//         children: [
+//             {path: "list", element: <CartList/>},
+//             {path: "confirm", element: <CartConfirm/>},
+//             {path: "success", element: <CartSuccess/>}
+//         ]
+//     },
+//     {path: "/", element: <Entrance/>},
+//     {
+//         path: "/",
+//         element: <Index/>,
+//         children: [
+//             {path:"home", element:<Home/>},
+//             {path:"goods", element:<Category/>},
+//             {path: "goods_detail", element: <GoodsDetail/>}
+//         ]
+//     },
+//     {path: "/search", element: <Search/>},
+//     {path: '*', element: <Navigate to={"/home"}/>}
+// ]

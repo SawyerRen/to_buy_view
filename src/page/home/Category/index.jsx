@@ -16,10 +16,11 @@ function Category(props) {
     // 接收search参数
     useEffect(() => {
         const page_size = 20
-        axios.get(`http://127.0.0.1:8000/api/goods/?category_id=${category_id}&page=${page}&page_size=${page_size}`).then(res => {
+        axios.get(`http://127.0.0.1:8000/goods/?category_id=${category_id}&page=${page}&page_size=${page_size}`).then(res => {
             setGoodsList(res.data)
+            console.log(res.data)
         })
-        console.log(goodsList)
+
     }, [category_id, page])
 
     function changePage(pageNumber) {

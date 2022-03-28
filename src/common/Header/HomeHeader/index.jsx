@@ -11,9 +11,11 @@ const {Search} = Input;
 function HomeHeader(props) {
     const [categoryList, setCategoryList] = useState([])
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/categories/`).then(res => {
+        axios.get(`http://127.0.0.1:8000/categories/`).then(res => {
             setCategoryList(res.data)
+            console.log(res.data)
         })
+
     }, [])
     return (
         <div className={s.head}>
@@ -37,7 +39,7 @@ function HomeHeader(props) {
                 </div>
                 <ul className={s.clearfix} id="bott">
                     <li><Link to={"/home"}>Home page</Link></li>
-                    <li><Link to={"/goods/0"}>All Goods</Link></li>
+                    <li><Link to={"/goods?category_id=0&page=1"}>All Goods</Link></li>
                     {
                         categoryList.map((item) => {
                             return <li key={item.id}><Link to={`/goods?category_id=${item.id}&page=1`}>{item.name}</Link></li>
