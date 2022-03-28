@@ -8,6 +8,7 @@ import axios from "axios";
 import {Input} from 'antd';
 
 const {Search} = Input;
+
 function HomeHeader(props) {
     const [categoryList, setCategoryList] = useState([])
     useEffect(() => {
@@ -15,7 +16,6 @@ function HomeHeader(props) {
             setCategoryList(res.data)
             console.log(res.data)
         })
-
     }, [])
     return (
         <div className={s.head}>
@@ -42,7 +42,8 @@ function HomeHeader(props) {
                     <li><Link to={"/goods?category_id=0&page=1"}>All Goods</Link></li>
                     {
                         categoryList.map((item) => {
-                            return <li key={item.id}><Link to={`/goods?category_id=${item.id}&page=1`}>{item.name}</Link></li>
+                            return <li key={item.id}><Link
+                                to={`/goods?category_id=${item.id}&page=1`}>{item.name}</Link></li>
                         })
                     }
                 </ul>
