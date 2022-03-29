@@ -12,9 +12,10 @@ const {Search} = Input;
 function HomeHeader(props) {
     const [categoryList, setCategoryList] = useState([])
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/categories/`).then(res => {
-            setCategoryList(res.data)
+        console.log("category")
+        axios.get(`/store/categories/`).then(res => {
             console.log(res.data)
+            setCategoryList(res.data.results)
         })
     }, [])
     return (

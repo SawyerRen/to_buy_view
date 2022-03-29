@@ -1,13 +1,41 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "./index.module.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import proDet from "../../../assets/img/temp/proDet.jpg"
 import add from "../../../assets/img/new/add.jpg";
 import sub from "../../../assets/img/new/sub.jpg";
 import per01 from "../../../assets/img/temp/per02.jpg"
 import see01 from "../../../assets/img/temp/see01.jpg"
+import {Button, message} from "antd";
+import axios from "axios";
 
 function GoodsDetail(props) {
+    const [buyNum, setBuyNum] = useState(1)
+    const navigate = useNavigate()
+    const [params] = useSearchParams();
+    const goods_id = params.getAll("goods_id")[0]
+    const handleAddCart = () => {
+        const user_id = localStorage.getItem("user_id")
+        console.log(user_id)
+        if (!user_id) {
+            navigate("/login", {replace: false})
+            return
+        }
+        axios.post("/store/cartitems/", {
+            "user": user_id,
+            "goods": goods_id,
+            "quantity": buyNum,
+        }).then(res => {
+            if (res.data.id) {
+                message.info("Add to cart successfully! Check your items in your shopping cart.")
+            } else {
+                message.error("Cannot add to your cart.")
+            }
+        }, () => {
+            message.error("Cannot add to your cart.")
+        })
+    }
+
     return (
         <div>
             <div className={s.address}>
@@ -35,19 +63,22 @@ function GoodsDetail(props) {
                                 <p>pro details</p>
                                 <p>Inventory: &nbsp;&nbsp;<span>2096</span></p>
                                 <div className={`${s.num} ${s.clearfix}`}>
-                                    <img className={`${s.fl} sub`} src={sub}/>
-                                    <span className={s.fl} contentEditable="true">1</span>
-                                    <img className={`${s.fl} add`} src={add}/>
+                                    <img className={`${s.fl} sub`} src={sub}
+                                         onClick={() => buyNum === 1 ? 1 : setBuyNum(buyNum - 1)}/>
+                                    <span className={s.fl}>{buyNum}</span>
+                                    <img className={`${s.fl} add`} src={add}
+                                         onClick={() => setBuyNum(buyNum + 1)}/>
                                 </div>
                             </div>
                             <div className={`${s.btns} ${s.clearfix}`}>
-                                <a href="#2"><p className={`${s.buy} ${s.fl}`}>Buy now</p></a>
-                                <a href="#2"><p className={`${s.cart} ${s.fr}`}>Add to cart</p></a>
+                                <Button size={"large"} className={`${s.buy} ${s.fl}`}>Buy
+                                    now</Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <Button size={"large"} className={`${s.cart}`} onClick={handleAddCart}>Add to
+                                    cart</Button>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div className={`${s.introMsg} ${s.wrapper} ${s.clearfix}`}>
                 <div className={`${s.msgL} ${s.fl}`}>
@@ -57,7 +88,7 @@ function GoodsDetail(props) {
                     <div className={s.msgAll}>
                         <div className={s.eva}>
                             <div className={`${s.per} ${s.clearfix}`}>
-                                <img className={s.fl} style={{width:"30px", height:"30px"}} src={per01}/>
+                                <img className={s.fl} style={{width: "30px", height: "30px"}} src={per01}/>
                                 <div className={`${s.perR} ${s.fl}`}>
                                     <p>username</p>
                                     <p>comment content</p>
@@ -65,7 +96,7 @@ function GoodsDetail(props) {
                                 </div>
                             </div>
                             <div className={`${s.per} ${s.clearfix}`}>
-                                <img className={s.fl} style={{width:"30px", height:"30px"}} src={per01}/>
+                                <img className={s.fl} style={{width: "30px", height: "30px"}} src={per01}/>
                                 <div className={`${s.perR} ${s.fl}`}>
                                     <p>username</p>
                                     <p>comment content</p>
@@ -73,7 +104,7 @@ function GoodsDetail(props) {
                                 </div>
                             </div>
                             <div className={`${s.per} ${s.clearfix}`}>
-                                <img className={s.fl} style={{width:"30px", height:"30px"}} src={per01}/>
+                                <img className={s.fl} style={{width: "30px", height: "30px"}} src={per01}/>
                                 <div className={`${s.perR} ${s.fl}`}>
                                     <p>username</p>
                                     <p>comment content</p>

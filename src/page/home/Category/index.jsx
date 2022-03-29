@@ -16,17 +16,20 @@ function Category(props) {
     // 接收search参数
     useEffect(() => {
         const page_size = 20
-        axios.get(`http://127.0.0.1:8000/goods/?category_id=${category_id}&page=${page}&page_size=${page_size}`).then(res => {
-            setGoodsList(res.data)
-            console.log(res.data)
-        })
-
+        if (category_id === "0") {
+            axios.get(`/store/goods/?page=${page}&page_size=${page_size}`).then(res => {
+                setGoodsList(res.data.results)
+            })
+        } else {
+            axios.get(`/store/goods/?category_id=${category_id}&page=${page}&page_size=${page_size}`).then(res => {
+                setGoodsList(res.data.results)
+            })
+        }
     }, [category_id, page])
 
     function changePage(pageNumber) {
         console.log('Page: ', pageNumber);
         navigate(`/goods?category_id=${category_id}&page=${pageNumber}`, { replace: true });
-        // props.history.push(`/goods?category_id=${category_id}&page=${pageNumber}`)
     }
 
     return (
