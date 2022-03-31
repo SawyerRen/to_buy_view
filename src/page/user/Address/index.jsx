@@ -6,15 +6,6 @@ import jia from "../../../assets/img/new/add.jpg"
 function UserAddress(props) {
     return (
         <div>
-            {/*<div className={`${s.address} ${s.mt}`}>*/}
-            {/*    <div className={`${s.wrapper} ${s.clearfix}`}>*/}
-            {/*        <Link to={"/home"} className={s.fl}>Home page</Link>*/}
-            {/*        <span>/</span>*/}
-            {/*        <Link to={"/user/index"}>User Center</Link>*/}
-            {/*        <span>/</span>*/}
-            {/*        <Link to={"/user/address"} className={s.on}>My address</Link>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
             <div className={s.Bott}>
                 <div className={`${s.wrapper} ${s.clearfix}`}>
                     <LeftMenu/>
@@ -35,7 +26,6 @@ function UserAddress(props) {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }
