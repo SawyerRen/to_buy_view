@@ -17,7 +17,7 @@ function Login(props) {
         setPassword(e.target.value)
     }
     const handleLogin = () => {
-        axios.post("/login", {
+        axios.post("/account/login", {
             "email": token,
             "phone_number": token,
             "password": password

@@ -28,7 +28,7 @@ function CartList(props) {
                 console.log(cost, count)
             }, 0)
             setTotalCount(count)
-            setTotalCost(cost)
+            setTotalCost(cost.toFixed(2))
         }, () => {
             message.error("Cannot get your shopping cart. Please try again later.")
         })

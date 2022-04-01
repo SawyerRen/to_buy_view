@@ -22,6 +22,7 @@ function Category(props) {
             })
         } else {
             axios.get(`/store/goods/?category_id=${category_id}&page=${page}&page_size=${page_size}`).then(res => {
+                console.log(res.data)
                 setGoodsList(res.data.results)
             })
         }

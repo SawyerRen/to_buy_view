@@ -9,6 +9,7 @@ const {Search} = Input;
 
 function UserHeader(props) {
     const [categoryList, setCategoryList] = useState([])
+    const [isLogin, setIsLogin] = useState(false)
     useEffect(() => {
         console.log("category")
         axios.get(`/store/categories/`).then(res => {

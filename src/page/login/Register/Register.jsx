@@ -41,7 +41,7 @@ function Register(props) {
             message.error("Please fill all blanks.")
             return
         }
-        axios.get(`/register_check?email=${email}&phone_number=${phone}`).then(res => {
+        axios.get(`/account/register_check?email=${email}&phone_number=${phone}`).then(res => {
             console.log(res.data)
             if (res.data.count > 0) {
                 message.error("Email or phone number already exists!")
@@ -49,7 +49,7 @@ function Register(props) {
             }
         })
         if (!valid) return
-        axios.post("/register", {
+        axios.post("/account/register", {
             "name": username,
             "password": password,
             "password2": password2,

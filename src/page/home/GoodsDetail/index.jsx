@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./index.module.css";
 import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import proDet from "../../../assets/img/temp/proDet.jpg"
@@ -11,9 +11,16 @@ import axios from "axios";
 
 function GoodsDetail(props) {
     const [buyNum, setBuyNum] = useState(1)
+    const [goods, setGoods] = useState({})
     const navigate = useNavigate()
     const [params] = useSearchParams();
     const goods_id = params.getAll("goods_id")[0]
+    useEffect(() => {
+        axios.get(`/store/goods/${goods_id}`).then(res => {
+            console.log(res.data)
+            setGoods(res.data)
+        })
+    },[])
     const handleAddCart = () => {
         const user_id = localStorage.getItem("user_id")
         console.log(user_id)
@@ -51,17 +58,17 @@ function GoodsDetail(props) {
                 <div className={`${s.proDet} ${s.wrapper}`}>
                     <div className={`${s.proCon} ${s.clearfix}`}>
                         <div className={`${s.proImg} ${s.fl}`}>
-                            <img className={"det"} src={proDet}/>
+                            <img className={"det"} src={goods.image_url}/>
                         </div>
                         <div className={`${s.fr} ${s.intro}`}>
                             <div className={s.title}>
-                                <h4>Goods title</h4>
-                                <p>description</p>
-                                <span>$59.90</span>
+                                <h4>{goods.name}</h4>
+                                <p>{goods.description}</p>
+                                <span>${goods.price * goods.discount}</span>
                             </div>
                             <div className={s.proIntro}>
-                                <p>pro details</p>
-                                <p>Inventory: &nbsp;&nbsp;<span>2096</span></p>
+                                <p>Sales: &nbsp;&nbsp;<span>{goods.sales}</span></p>
+                                <p>Inventory: &nbsp;&nbsp;<span>{goods.inventory}</span></p>
                                 <div className={`${s.num} ${s.clearfix}`}>
                                     <img className={`${s.fl} sub`} src={sub}
                                          onClick={() => buyNum === 1 ? 1 : setBuyNum(buyNum - 1)}/>

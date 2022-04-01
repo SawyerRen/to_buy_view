@@ -4,11 +4,12 @@ import "./index.module.css";
 import Footer from "../../common/Footer";
 import LeftMenu from "../../common/user/LeftMenu";
 import {Outlet} from "react-router-dom";
+import HomeHeader from "../../common/Header/HomeHeader";
 
 function User(props) {
     return (
         <div>
-            <UserHeader/>
+            <HomeHeader/>
             <Outlet/>
             <Footer/>
         </div>

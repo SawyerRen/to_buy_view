@@ -11,13 +11,19 @@ const {Search} = Input;
 
 function HomeHeader(props) {
     const [categoryList, setCategoryList] = useState([])
+    const [isLogin, setIsLogin] = useState(false)
     useEffect(() => {
-        console.log("category")
+        if (localStorage.getItem("user_id")) setIsLogin(true)
+        else setIsLogin(false)
         axios.get(`/store/categories/`).then(res => {
             console.log(res.data)
             setCategoryList(res.data.results)
         })
     }, [])
+    const handleLogout = () => {
+        localStorage.removeItem("user_id")
+        setIsLogin(false)
+    }
     return (
         <div className={s.head}>
             <div className={`${s.wrapper} ${s.clearfix}`}>
@@ -26,15 +32,21 @@ function HomeHeader(props) {
                                                                  src={logo}/></Link></h1>
                     <div className={`${s.fr} ${s.clearfix}`} id="top1">
                         <p className={s.fl}>
-                            <Link to={"/login"}>Login</Link>
-                            <Link to={"/register"}>Register</Link>
+                            {isLogin ?
+                                <Link to={"/home"} onClick={handleLogout}>Login
+                                    out</Link> :
+                                <>
+                                    <Link to={"/login"}>Login</Link>
+                                    <Link to={"/register"}>Register</Link>
+                                </>
+                            }
                         </p>
                         <form action="#" method="get" className={s.fl}>
                             <Search placeholder="input search text" allowClear bordered={false} style={{width: 180}}/>
                         </form>
                         <div className={`${s.btn} ${s.fl} ${s.clearfix}`}>
-                            <Link to={"/user/index"}><img src={userLogo}/></Link>
-                            <Link to={"/cart/list"}><img src={cartLogo}/></Link>
+                            <Link to={isLogin ? "/user/index" : "/login"}><img src={userLogo}/></Link>
+                            <Link to={isLogin ? "/cart/list" : "/login"}><img src={cartLogo}/></Link>
                         </div>
                     </div>
                 </div>
