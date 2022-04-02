@@ -83,14 +83,6 @@ function CartList(props) {
                 }
                 <div className={s.goOn}>Nothing here~<Link to={"/index"}>Go to shopping</Link></div>
                 <div className={`${s.tr} ${s.clearfix}`}>
-                    {/*<label className={s.fl}>*/}
-                    {/*    <input className={"checkAll"} type="checkbox"/>*/}
-                    {/*    <span></span>*/}
-                    {/*</label>*/}
-                    {/*<p className={s.fl}>*/}
-                    {/*    <a href="#">Select all</a>*/}
-                    {/*    <a href="#" className={s.del}>Delete</a>*/}
-                    {/*</p>*/}
                     <p className={s.fr}>
                         <span><small id="sl">{totalCount}</small> goods in total</span>
                         <span>Total:&nbsp;<small id="all">${totalCost}</small></span>

@@ -1,14 +1,14 @@
 import React from 'react';
-import UserHeader from "../../common/Header/UserHeader";
 import Footer from "../../common/Footer";
 import s from "./index.module.css";
 import {Link} from "react-router-dom";
 import pro from "../../assets/img/temp/pro01.jpg";
+import HomeHeader from "../../common/Header/HomeHeader";
 
 function Search(props) {
     return (
         <div>
-            <UserHeader/>
+            <HomeHeader/>
             <div className={s.schBox}>
                 <ul className={`${s.wrapper} ${s.sch}`}>
                     <li>
