@@ -73,7 +73,7 @@ function Search(props) {
                     goodsList.map((item) => {
                         return (
                             <li key={item.id}>
-                                <Link to={`/goods_detail??goods_id=${item.id}`}>
+                                <Link to={`/goods_detail?goods_id=${item.id}`}>
                                     <dl>
                                         <dt><img src={item.image_url}/></dt>
                                         <dd>{item.name}</dd>
