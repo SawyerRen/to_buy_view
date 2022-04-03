@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import s from "./index.module.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import logo from "../../../assets/img/new/logo.png"
 import userLogo from "../../../assets/img/new/grzx.png"
 import cartLogo from "../../../assets/img/gwc.png"
@@ -12,11 +12,11 @@ const {Search} = Input;
 function HomeHeader(props) {
     const [categoryList, setCategoryList] = useState([])
     const [isLogin, setIsLogin] = useState(false)
+    const navigate = useNavigate()
     useEffect(() => {
         if (localStorage.getItem("user_id")) setIsLogin(true)
         else setIsLogin(false)
         axios.get(`/store/categories/`).then(res => {
-            console.log(res.data)
             setCategoryList(res.data.results)
         })
     }, [])
@@ -42,7 +42,8 @@ function HomeHeader(props) {
                             }
                         </p>
                         <form action="#" method="get" className={s.fl}>
-                            <Search placeholder="input search text" allowClear bordered={false} style={{width: 180}}/>
+                            <Search placeholder="input search text" allowClear bordered={false} style={{width: 180}}
+                                    onSearch={(value) => navigate(`/search?keyword=${value}&page=1`)}/>
                         </form>
                         <div className={`${s.btn} ${s.fl} ${s.clearfix}`}>
                             <Link to={isLogin ? "/user/index" : "/login"}><img src={userLogo}/></Link>

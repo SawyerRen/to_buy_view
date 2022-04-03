@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import s from "./index.module.css";
 import {Link} from "react-router-dom";
 import LeftMenu from "../../../common/user/LeftMenu";
 import code from "../../../assets/img/new/code.jpg"
 import axios from "axios";
-import {message} from "antd";
+import {Input, message} from "antd";
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 function ChangePwd(props) {
     const [newPassword1, setNewPassword1] = useState("")
@@ -32,11 +33,14 @@ function ChangePwd(props) {
         }).then(res => {
             if (res.data.id) {
                 message.info("Change your password successfully!")
+                setOldPassword("")
+                setNewPassword1("")
+                setNewPassword2("")
             } else {
-                message.error("Cannot change your password")
+                message.error("Cannot change your password. Please check your password.")
             }
         }, () => {
-            message.error("Cannot change your password")
+            message.error("Cannot change your password. Please check your password.")
         })
     }
     return (
@@ -47,12 +51,13 @@ function ChangePwd(props) {
                     <div className={`${s.you} ${s.fl}`}>
                         <h2>Change password</h2>
                         <form action="#" method="get" className={s.remima}>
-                            <p><span>previous password：</span><input type="text" onChange={handleOldPwdChange.bind(this)}/></p>
+                            {/*<p><span>previous password：</span><input type="password" onChange={handleOldPwdChange.bind(this)}/></p>*/}
+                            <p><span>previous password：</span><Input type={"password"} style={{width:"240px"}} onChange={handleOldPwdChange.bind(this)} value={oldPassword}/></p>
                             <p className={s.op}>input previous password</p>
-                            <p><span>new password：</span><input type="text" onChange={handleNewPwd1Change.bind(this)}/></p>
+                            <p><span>new password：</span><Input type={"password"} style={{width:"240px"}} onChange={handleNewPwd1Change.bind(this)} value={newPassword1}/></p>
                             <p className={s.op}>6-16 characters, need to use a combination of letters, numbers or
                                 symbols, cannot use pure numbers, pure letters, pure symbols</p>
-                            <p><span>repeat new password：</span><input type="text" onChange={handleNewPwd2Change.bind(this)}/></p>
+                            <p><span>repeat new password：</span><Input type={"password"} style={{width:"240px"}} onChange={handleNewPwd2Change.bind(this)} value={newPassword2}/></p>
                             <p className={s.op}>repeat new password</p>
                             <input type="submit" value="Submit" onClick={handleChangePwd}/>
                         </form>

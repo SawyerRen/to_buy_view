@@ -845,7 +845,7 @@ form.remima p span{
     text-align: right;
     font-size: 14px;
 }
-form.remima p input[type=text]{
+form.remima p input[type=password]{
     display: inline-block;
     width: 240px;
     height: 30px;
