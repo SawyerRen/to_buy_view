@@ -3,7 +3,7 @@ import s from "./index.module.css";
 import {Link} from "react-router-dom";
 import LeftMenu from "../../../common/user/LeftMenu";
 import jia from "../../../assets/img/new/add.jpg"
-import {Button, Modal, Form, Input, Radio, message, Popconfirm} from 'antd';
+import {Button, Modal, Form, Input, Radio, message, Popconfirm, Tag} from 'antd';
 import axios from "axios";
 import {Card, Col, Row} from 'antd';
 import AddAddressForm from "./AddForm";
@@ -46,14 +46,19 @@ function UserAddress(props) {
 
                         <div>
                             {
-                                addressList.map((item, index) => {
+                                addressList.map((item) => {
                                     return (
                                         <div className="site-card-wrapper" key={item.id}>
                                             <Row>
                                                 <Col span={24}>
                                                     <Card
-                                                        title={`${item.receiver_first_name + " " + item.receiver_last_name} , ${item.county}`}
-                                                        bordered={true}>
+                                                        title={
+                                                            <div>{item.receiver_first_name + " " + item.receiver_last_name} , {item.county} &nbsp;&nbsp;&nbsp;
+                                                                <Tag
+                                                                    color="blue">{item.free_delivery ? "Free delivery" : ""}</Tag>
+                                                            </div>}
+                                                        bordered={true}
+                                                    >
                                                         <p>{item.receiver_first_name + " " + item.receiver_last_name}</p>
                                                         <p>{item.receiver_phone_number}</p>
                                                         <p>{item.state}</p>
