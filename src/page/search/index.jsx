@@ -1,14 +1,36 @@
-import React from 'react';
-import UserHeader from "../../common/Header/UserHeader";
+import React, {useEffect, useState} from 'react';
 import Footer from "../../common/Footer";
 import s from "./index.module.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate, useSearchParams} from "react-router-dom";
 import pro from "../../assets/img/temp/pro01.jpg";
+import HomeHeader from "../../common/Header/HomeHeader";
+import axios from "axios";
+import {Pagination} from "antd";
 
 function Search(props) {
+    let navigate = useNavigate();
+    const [params] = useSearchParams();
+    const keyword = params.getAll("keyword")[0]
+    const page = params.getAll("page")[0]
+    const [goodsList, setGoodsList] = useState([])
+    const [total, setTotal] = useState(0)
+    const pageSize = 20
+    useEffect(() => {
+        console.log(keyword)
+        console.log(page)
+        axios.get(`/store/goods/?search=${keyword}&page=${page}&page_size=${pageSize}`).then(res => {
+            setGoodsList(res.data.results)
+            setTotal(res.data.count)
+        })
+    }, [])
+
+    function changePage(pageNumber) {
+        console.log('Page: ', pageNumber);
+        navigate(`/search?keyword=${keyword}&page=${pageNumber}`);
+    }
     return (
         <div>
-            <UserHeader/>
+            <HomeHeader/>
             <div className={s.schBox}>
                 <ul className={`${s.wrapper} ${s.sch}`}>
                     <li>
@@ -47,35 +69,25 @@ function Search(props) {
             </div>
 
             <ul className={`${s.proList} ${s.wrapper} ${s.clearfix}`}>
-                <li>
-                    <Link to={"/goods_detail"}>
-                        <dl>
-                            <dt><img src={pro}/></dt>
-                            <dd>Product name</dd>
-                            <dd>$17.90</dd>
-                        </dl>
-                    </Link>
-                </li>
-                <li>
-                    <Link to={"/goods_detail"}>
-                        <dl>
-                            <dt><img src={pro}/></dt>
-                            <dd>Product name</dd>
-                            <dd>$17.90</dd>
-                        </dl>
-                    </Link>
-                </li>
-                <li>
-                    <Link to={"/goods_detail"}>
-                        <dl>
-                            <dt><img src={pro}/></dt>
-                            <dd>Product name</dd>
-                            <dd>$17.90</dd>
-                        </dl>
-                    </Link>
-                </li>
+                {
+                    goodsList.map((item) => {
+                        return (
+                            <li key={item.id}>
+                                <Link to={`/goods_detail??goods_id=${item.id}`}>
+                                    <dl>
+                                        <dt><img src={item.image_url}/></dt>
+                                        <dd>{item.name}</dd>
+                                        <dd>${item.price}</dd>
+                                    </dl>
+                                </Link>
+                            </li>
+                        )
+                    })
+                }
             </ul>
-
+            <div style={{textAlign: "center"}}>
+                <Pagination defaultCurrent={1} total={total} pageSize={pageSize} showSizeChanger={false} onChange={changePage}/>
+            </div>
             <Footer/>
         </div>
     );

@@ -836,16 +836,16 @@ form.remima p:nth-child(1) input[type=checkbox]{
     vertical-align: -2px;
 }
 form.remima p.op{
-    margin-left: 140px;
+    margin-left: 200px;
     color: #757575;
 }
 form.remima p span{
     display: inline-block;
-    width: 140px;
+    width: 200px;
     text-align: right;
     font-size: 14px;
 }
-form.remima p input[type=text]{
+form.remima p input[type=password]{
     display: inline-block;
     width: 240px;
     height: 30px;

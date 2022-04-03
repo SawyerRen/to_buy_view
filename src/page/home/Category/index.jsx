@@ -6,38 +6,39 @@ import pro from "../../../assets/img/temp/pro01.jpg";
 import {useSearchParams} from "react-router-dom";
 import axios from "axios";
 import {Pagination} from 'antd';
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+
 function Category(props) {
     let navigate = useNavigate();
     const [goodsList, setGoodsList] = useState([])
     const [params] = useSearchParams();
     const category_id = params.getAll("category_id")[0]
     const page = params.getAll("page")[0]
+    const [total, setTotal] = useState(0)
+    const page_size = 20
     // 接收search参数
     useEffect(() => {
-        const page_size = 20
         if (category_id === "0") {
             axios.get(`/store/goods/?page=${page}&page_size=${page_size}`).then(res => {
                 setGoodsList(res.data.results)
+                setTotal(res.data.count)
             })
         } else {
             axios.get(`/store/goods/?category_id=${category_id}&page=${page}&page_size=${page_size}`).then(res => {
                 setGoodsList(res.data.results)
+                setTotal(res.data.count)
             })
         }
     }, [category_id, page])
 
     function changePage(pageNumber) {
         console.log('Page: ', pageNumber);
-        navigate(`/goods?category_id=${category_id}&page=${pageNumber}`, { replace: true });
+        navigate(`/goods?category_id=${category_id}&page=${pageNumber}`, {replace: true});
     }
 
     return (
 
         <div>
-            <div className={s.banner}>
-                <a href="#"><img src={banner}/></a>
-            </div>
 
             <div className={s.address}>
                 <div className={`${s.wrapper} ${s.clearfix}`}>
@@ -75,7 +76,8 @@ function Category(props) {
                 }
             </ul>
             <div style={{textAlign: "center"}}>
-                <Pagination defaultCurrent={1} total={200} showSizeChanger={false} onChange={changePage}/>
+                <Pagination defaultCurrent={1} total={total} pageSize={page_size} showSizeChanger={false}
+                            onChange={changePage}/>
             </div>
         </div>
     );

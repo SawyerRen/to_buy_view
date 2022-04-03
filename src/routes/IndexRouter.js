@@ -28,7 +28,7 @@ export default function IndexRouter() {
             <Route path={"/register"} element={<Register/>}/>
             <Route path={"/"} element={<Entrance/>}/>
 
-            <Route path={"/user"} element={localStorage.getItem("user_id") ? <User/> : <Navigate to={"/login"} replace={false}/>}>
+            <Route path={"/user"} element={<User/>}>
                 <Route path={"order"} element={<Order/>}/>
                 <Route path={"comment"} element={<Comment/>}/>
                 <Route path={"index"} element={<UserCenter/>}/>
@@ -38,7 +38,7 @@ export default function IndexRouter() {
                 <Route path={"order_detail"} element={<OrderDetail/>}/>
             </Route>
 
-            <Route path={"/cart"} element={localStorage.getItem("user_id") ? <Cart/> : <Navigate to={"/login"} replace={false}/>}>
+            <Route path={"/cart"} element={<Cart/>}>
                 <Route path={"list"} element={<CartList/>}/>
                 <Route path={"confirm"} element={<CartConfirm/>}/>
                 <Route path={"success"} element={<CartSuccess/>}/>
