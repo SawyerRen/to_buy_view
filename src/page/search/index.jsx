@@ -19,10 +19,11 @@ function Search(props) {
         console.log(keyword)
         console.log(page)
         axios.get(`/store/goods/?search=${keyword}&page=${page}&page_size=${pageSize}`).then(res => {
+            console.log(res.data)
             setGoodsList(res.data.results)
             setTotal(res.data.count)
         })
-    }, [])
+    }, [keyword, page])
 
     function changePage(pageNumber) {
         console.log('Page: ', pageNumber);
