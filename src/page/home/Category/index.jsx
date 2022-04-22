@@ -33,7 +33,7 @@ function Category(props) {
 
     function changePage(pageNumber) {
         console.log('Page: ', pageNumber);
-        navigate(`/goods?category_id=${category_id}&page=${pageNumber}`, {replace: true});
+        navigate(`/goods?category_id=${category_id}&page=${pageNumber}`);
     }
 
     return (
