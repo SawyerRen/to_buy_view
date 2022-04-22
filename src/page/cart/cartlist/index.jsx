@@ -7,21 +7,12 @@ import add from "../../../assets/img/new/add.jpg";
 import axios from "axios";
 import {Button, message, Popconfirm} from "antd";
 
-function useForceUpdate() {
-    const [value, setValue] = useState(0); // integer state
-    return () => setValue(value => value + 1); // update the state to force render
-}
-
 function CartList(props) {
     const [cartItemList, setCartItemList] = useState([])
     const [totalCost, setTotalCost] = useState(0)
     const [totalCount, setTotalCount] = useState(0)
     const navigate = useNavigate()
-    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
-    function handleClick() {
-        forceUpdate();
-    }
     useEffect(() => {
         const user_id = localStorage.getItem("user_id")
         if (!user_id) {
