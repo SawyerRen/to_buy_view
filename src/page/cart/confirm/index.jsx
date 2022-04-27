@@ -121,7 +121,7 @@ function CartConfirm(props) {
                         {
                             cartItemList.map(item => {
                                 return (
-                                    <ul className={s.clearfix}>
+                                    <ul className={s.clearfix} key={item.id}>
                                         <li className={s.fl}>
                                             <img src={item.goods.image_url}/>
                                         </li>
