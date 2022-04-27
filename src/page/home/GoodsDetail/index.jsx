@@ -12,6 +12,7 @@ import axios from "axios";
 function GoodsDetail(props) {
     const [buyNum, setBuyNum] = useState(1)
     const [goods, setGoods] = useState({})
+    const [recommendList, setRecommendList] = useState([])
     const navigate = useNavigate()
     const [params] = useSearchParams();
     const goods_id = params.getAll("goods_id")[0]
@@ -19,8 +20,13 @@ function GoodsDetail(props) {
         axios.get(`/store/goods/${goods_id}`).then(res => {
             console.log(res.data)
             setGoods(res.data)
+            const category_id = res.data.category
+            axios.get(`/store/bestseller/?category_id=${category_id}`).then(res => {
+                console.log(res.data.results)
+                setRecommendList(res.data.results.slice(0, 8))
+            })
         })
-    },[])
+    }, [goods_id])
     const handleAddCart = () => {
         const user_id = localStorage.getItem("user_id")
         console.log(user_id)
@@ -87,6 +93,7 @@ function GoodsDetail(props) {
                     </div>
                 </div>
             </div>
+
             <div className={`${s.introMsg} ${s.wrapper} ${s.clearfix}`}>
                 <div className={`${s.msgL} ${s.fl}`}>
                     <div className={`${s.msgTit} ${s.clearfix}`}>
@@ -122,22 +129,21 @@ function GoodsDetail(props) {
                     </div>
                 </div>
                 <div className={`${s.msgR} ${s.fr}`}>
-                    <h4>recommend for you</h4>
+                    <h4>Recommend for you</h4>
                     <div className={s.seeList}>
-                        <Link to={"/goods_detail"}>
-                            <dl>
-                                <dt><img src={see01}/></dt>
-                                <dd>product</dd>
-                                <dd>$193.20</dd>
-                            </dl>
-                        </Link>
-                        <Link to={"/goods_detail"}>
-                            <dl>
-                                <dt><img src={see01}/></dt>
-                                <dd>product</dd>
-                                <dd>$193.20</dd>
-                            </dl>
-                        </Link>
+                        {
+                            recommendList.map(item => {
+                                return (
+                                    <Link to={`/goods_detail?goods_id=${item.id}`} key={item.id}>
+                                        <dl>
+                                            <dt><img src={item.image_url}/></dt>
+                                            <dd>{item.name.substring(0, 40)}</dd>
+                                            <dd>${item.price}</dd>
+                                        </dl>
+                                    </Link>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>

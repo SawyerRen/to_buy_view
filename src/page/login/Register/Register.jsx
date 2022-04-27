@@ -15,7 +15,7 @@ function Register(props) {
     const [phone, setPhone] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
-    const [gender, setGender] = useState(0)
+    const [gender, setGender] = useState("")
     const navigate = useNavigate()
     const handleNameChange = (e) => {
         setUsername(e.target.value)
@@ -33,7 +33,7 @@ function Register(props) {
         setPassword2(e.target.value)
     }
     const handleGenderChange = (value) => {
-        setGender(value * 1)
+        setGender(value)
     }
     const handleRegister = () => {
         let valid = true
