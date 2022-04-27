@@ -83,7 +83,7 @@ function Register(props) {
                 Select your gender: &nbsp;<Select defaultValue="default" style={{width: 120}}
                                                   onChange={handleGenderChange}>
                 <Option value="1">Male</Option>
-                <Option value="0">Female</Option>
+                <Option value="2">Female</Option>
             </Select><br/><br/>
                 <Button onClick={handleRegister}>Register</Button>
                 <p className={`${s.txtL} ${s.txt}`}>By completing this registration, you agree to our <a href="#">
