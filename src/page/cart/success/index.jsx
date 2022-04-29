@@ -17,6 +17,7 @@ function CartSuccess(props) {
             <div className={`${s.order} ${s.mt} ${s.cart}`}>
                 <p className={s.ok}>Payment Success！<Link to={"/user/order"}>Go to order page</Link></p>
             </div>
+
             <div className={s.like}>
                 <h4>Maybe you like</h4>
                 <div className={s.bottom}>

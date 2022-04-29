@@ -97,34 +97,12 @@ function GoodsDetail(props) {
             <div className={`${s.introMsg} ${s.wrapper} ${s.clearfix}`}>
                 <div className={`${s.msgL} ${s.fl}`}>
                     <div className={`${s.msgTit} ${s.clearfix}`}>
-                        <a>Comments</a>
+                        
                     </div>
                     <div className={s.msgAll}>
                         <div className={s.eva}>
-                            <div className={`${s.per} ${s.clearfix}`}>
-                                <img className={s.fl} style={{width: "30px", height: "30px"}} src={per01}/>
-                                <div className={`${s.perR} ${s.fl}`}>
-                                    <p>username</p>
-                                    <p>comment content</p>
-                                    <p><span>2016/12/27 08:31</span></p>
-                                </div>
-                            </div>
-                            <div className={`${s.per} ${s.clearfix}`}>
-                                <img className={s.fl} style={{width: "30px", height: "30px"}} src={per01}/>
-                                <div className={`${s.perR} ${s.fl}`}>
-                                    <p>username</p>
-                                    <p>comment content</p>
-                                    <p><span>2016/12/27 08:31</span></p>
-                                </div>
-                            </div>
-                            <div className={`${s.per} ${s.clearfix}`}>
-                                <img className={s.fl} style={{width: "30px", height: "30px"}} src={per01}/>
-                                <div className={`${s.perR} ${s.fl}`}>
-                                    <p>username</p>
-                                    <p>comment content</p>
-                                    <p><span>2016/12/27 08:31</span></p>
-                                </div>
-                            </div>
+                           
+                            
                         </div>
                     </div>
                 </div>
