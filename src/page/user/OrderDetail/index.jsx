@@ -7,22 +7,14 @@ import g1 from "../../../assets/img/g1.jpg"
 function OrderDetail(props) {
     return (
         <div>
-            {/*<div className={`${s.address} ${s.mt}`}>*/}
-            {/*    <div className={`${s.wrapper} ${s.clearfix}`}>*/}
-            {/*        <Link to={"/home"} className={s.fl}>Home page</Link>*/}
-            {/*        <span>/</span>*/}
-            {/*        <Link to={"/user/order"}>My order</Link>*/}
-            {/*        <span>/</span>*/}
-            {/*        <Link to={"/user/order_detail"} className={s.on}>Order detail</Link>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+           
             <div className={s.Bott}>
                 <div className={`${s.wrapper} ${s.clearfix}`}>
                     <LeftMenu/>
                     <div className={`${s.you} ${s.fl}`}>
                         <div className={`${s.my} ${s.clearfix}`}>
                             <h2>Order detail</h2>
-                            <h3>Order number：<span>54163846846848468</span></h3>
+                           
                         </div>
                         <div className={s.orderList}>
                             <div className={s.orderList1}>

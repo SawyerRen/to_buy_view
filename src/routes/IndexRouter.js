@@ -21,6 +21,8 @@ import Entrance from "../page/entrance";
 import {Routes, Route, Navigate} from "react-router-dom"
 
 
+
+
 export default function IndexRouter() {
     return (
         <Routes>

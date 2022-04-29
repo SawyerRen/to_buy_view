@@ -141,6 +141,7 @@ summary {
     min-width: 1160px;
     position: relative;
     border-bottom: 1px solid #e0e0e0;
+
 }
 
 .head h1 img {
@@ -724,7 +725,7 @@ body {
 
 .Bott .you .dkuang .word {
     color: #757575;
-    border-bottom: 1px solid #e0e0e0;
+    
 }
 
 .Bott .you .dkuang .word ul {
